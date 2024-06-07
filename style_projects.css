@@ -22,6 +22,7 @@
     align-self: center;
     justify-self: center;
     opacity: 0.2;
+    background-image: url('images/projects/architecture_shaft_2.webp');
 }
 
 #projects-pillar-left {
@@ -83,6 +84,7 @@
     height: 100%;
     opacity: 0.2;
     z-index: 100;
+    background-image: url('images/contact/marble_texture.webp');
 }
 
 .item {

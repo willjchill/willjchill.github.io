@@ -20,7 +20,7 @@ body, div, p {
 #hero-background {
     position: fixed;
     z-index: -98;
-    height: max(480px, 100vh);
+    height: max(480px, 100svh);
     width: 100vw;
     max-width: 100%;
     background: transparent;
@@ -30,19 +30,20 @@ body, div, p {
     position: fixed; 
     left: 0;
     width: 100%; 
-    height: max(480px, 100vh); 
+    height: max(480px, 100svh); 
     z-index: -99;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.2;
+    background-image: url('images/hero/best_edit.webp');
 }
 
 #hero-gradient {
     position: fixed; 
     left: 0;
     width: 100%; 
-    height: max(480px, 100vh);
+    height: max(480px, 100svh);
     z-index: -100; 
     background: rgb(47,65,84);
     background: linear-gradient(90deg, rgba(47,65,84,1) 10%, rgba(86,85,94,1) 100%);

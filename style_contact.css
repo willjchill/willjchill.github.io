@@ -19,6 +19,7 @@
     background-position: center;
     background-repeat: no-repeat;
     opacity: 0.2;
+    background-image: url('images/contact/marble_texture.webp')
 }
 
 #contact-gradient {
