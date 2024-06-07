@@ -104,7 +104,7 @@ body, div, p {
         grid-template-rows: repeat(8, 1fr); /* 6 rows */
         grid-template-columns: repeat(6, 1fr); /* 12 columns */
         background: transparent;
-        height: max(480px, 100vh);
+        height: max(480px, 100svh);
         background-size: cover;
     }
     
@@ -232,7 +232,7 @@ body, div, p {
         grid-template-rows: repeat(6, 1fr); /* 6 rows */
         grid-template-columns: repeat(12, 1fr); /* 12 columns */
         background: transparent;
-        height: max(480px, 100vh);
+        height: max(480px, 100svh);
         width: 100vw;
         max-width: 100%;
     }

@@ -5,7 +5,7 @@
     max-width: 100%;
     min-width: 320px;
     min-height: 768px;
-    top: max(480px, 100vh);
+    top: max(480px, 100svh);
     left: 0;
     z-index: 0;
     opacity: 0.2;
