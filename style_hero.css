@@ -1,0 +1,352 @@
+/* Default font size for REM */ 
+/* We will scale this based on viewport */  
+:root {
+    --font-size-PC: 16px;
+    --font-size-mobile: 8px;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body, div, p {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+/* Hero background */ 
+
+#hero-background {
+    position: fixed;
+    z-index: -98;
+    height: max(480px, 100vh);
+    width: 100vw;
+    max-width: 100%;
+    background: transparent;
+}
+
+#hero-img {
+    position: fixed; 
+    left: 0;
+    width: 100%; 
+    height: max(480px, 100vh); 
+    z-index: -99;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+#hero-gradient {
+    position: fixed; 
+    left: 0;
+    width: 100%; 
+    height: max(480px, 100vh);
+    z-index: -100; 
+    background: rgb(47,65,84);
+    background: linear-gradient(90deg, rgba(47,65,84,1) 10%, rgba(86,85,94,1) 100%);
+}
+
+.grid-item {
+    display: flex; 
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    background-color: transparent;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1000px) {
+    #hero-main-message {
+        font-size: 4.236rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: bold; 
+        color: #f7f7f7;
+    }
+}
+
+@media (min-width:1000px) and (max-width: 1700px) {
+    #hero-main-message {
+        font-size: 6.854rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: bold; 
+        color: #f7f7f7;
+    }
+}
+
+/* Hero section for mobile viewmode */ 
+@media (max-width: 1700px) {
+    html {
+        font-size: var(--font-size-mobile);
+        overflow-x: hidden;
+    }
+    
+    /* Hero subsections */ 
+    
+    #grid-container {
+        display: grid;
+        width: 100vw;
+        min-width: 320px;
+        grid-template-rows: repeat(8, 1fr); /* 6 rows */
+        grid-template-columns: repeat(6, 1fr); /* 12 columns */
+        background: transparent;
+        height: max(480px, 100vh);
+        background-size: cover;
+    }
+    
+    #name-card {
+        grid-column: 1 / span 2; 
+        position: relative;
+    }
+    
+    #name-card object {
+        width: 6.854rem;
+        object-fit: cover; 
+    }
+    
+    #career-title {
+        grid-row: 1 / span 1;
+        grid-column: 3 / span 2; 
+        font-size: 1.618rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: italic; 
+        color: #f7f7f7;
+    }
+    
+    #hardware-boon { 
+        display: flex;
+        grid-row: 5 / span 1;
+        grid-column: 3 / span 1; 
+        width: 100%;
+        height: 100%;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding-right: 1rem;
+        margin-top: 2rem;
+    }
+    
+    #hardware-boon object {
+        width: 6.854rem;
+        object-fit: cover;
+        box-shadow: 0px 0px 30px #8C7B7B;
+        border-radius: 50%;
+        animation: pulse 4s infinite;
+    }
+    
+    #software-boon {
+        display: flex;
+        grid-row: 5 / span 1;
+        grid-column: 4 / span 1;
+        width: 100%;
+        height: 100%; 
+        justify-content: flex-start;
+        align-items: flex-end;
+        padding-left: 1rem;
+        margin-top: 2rem;
+    }
+    
+    #software-boon object {
+        width: 6.854rem;
+        object-fit: cover;
+        box-shadow: 0px 0px 30px #8C7B7B;
+        border-radius: 50%;
+        animation: pulse 4s infinite;
+    }
+    
+    #hero-description {
+        grid-column: 1 / span 6;
+        grid-row: 2 / span 3; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5%;
+        padding: 1rem;
+    }
+    
+    #hero-description p {
+        text-align: center;
+    }
+    
+    #hero-sub-message {
+        font-size: 2.618rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: italic; 
+        color: #f7f7f7;
+    }
+    
+    #hand-left {
+        grid-column: 1 / span 6;
+        grid-row: 6 / span 3; 
+        z-index: -1;
+        position: relative;
+    }
+    
+    #hand-left img {
+        height: 100%; 
+        object-fit: contain; 
+    }
+    
+    #hand-right {
+        grid-column: 6 / span 1;
+        z-index: -1;
+        grid-row: 8 / span 1; 
+        display: none;
+    }
+    
+    #hand-right img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: contain; 
+        transform: scaleX(-1);
+        display: none;
+    }   
+}
+
+/* Hero section for PC viewmode */ 
+@media (min-width: 1700px) {
+    html {
+        font-size: var(--font-size-PC);
+    }
+    
+    /* Hero subsections */ 
+    
+    #grid-container {
+        position: relative;
+        display: grid;
+        grid-template-rows: repeat(6, 1fr); /* 6 rows */
+        grid-template-columns: repeat(12, 1fr); /* 12 columns */
+        background: transparent;
+        height: max(480px, 100vh);
+        width: 100vw;
+        max-width: 100%;
+    }
+    
+    #name-card {
+        grid-column: 1 / span 2; 
+        position: relative;
+
+    }
+    
+    #name-card object {
+        width: 6.854rem;
+        object-fit: cover; 
+        z-index: -1;
+    }
+    
+    #career-title {
+        grid-column: 1 / span 12; 
+        font-size: 1.618rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: italic; 
+        color: #f7f7f7;
+    }
+    
+    #hardware-boon { 
+        grid-row: 3 / span 1;
+        grid-column: 1 / span 3; 
+    }
+    
+    #hardware-boon object {
+        width: 6.854rem;
+        object-fit: cover;
+        box-shadow: 0px 0px 30px #8C7B7B;
+        border-radius: 50%;
+        animation: pulse 4s infinite;
+        z-index: -1;
+    }
+    
+    #software-boon {
+        grid-row: 3 / span 1;
+        grid-column: 10 / span 3; 
+    }
+    
+    #software-boon object {
+        width: 6.854rem;
+        object-fit: cover;
+        box-shadow: 0px 0px 30px #8C7B7B;
+        border-radius: 50%;
+        animation: pulse 4s infinite;
+        z-index: -1;
+    }
+    
+    #hero-description {
+        grid-column: 4 / span 6;
+        grid-row: 3 / span 4; 
+        flex-direction: column;
+        align-items: normal;
+        justify-content: normal;
+        gap: 5%;
+    }
+    
+    #hero-description p {
+        text-align: center;
+    }
+    
+    #hero-main-message {
+        font-size: 6.854rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: bold; 
+        color: #f7f7f7;
+    }
+    
+    #hero-sub-message {
+        font-size: 2.618rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: italic; 
+        color: #f7f7f7;
+    }
+    
+    #hand-left {
+        z-index: -50;
+        padding-left: 1rem;
+        grid-column: 1 / span 3;
+        grid-row: 4 / span 3; 
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+    }
+    
+    #hand-left img {
+        width: 100%; 
+        height: auto;
+        max-height: 100%;
+        object-fit: contain; 
+    }
+    
+    #hand-right {
+        z-index: -50;
+        padding-right: 1rem;
+        grid-column: 10 / span 3;
+        grid-row: 4 / span 3; 
+        display: block;
+        display: flex;
+        align-items: flex-end;
+    }
+    
+    #hand-right img {
+        width: 100%; 
+        height: auto; 
+        max-height: 100%;
+        object-fit: contain; 
+        transform: scaleX(-1);
+        display: block;
+    }    
+}
