@@ -147,7 +147,6 @@ const filepath_lang_icon = {
 async function init_run() {
     // fetch projects when page loads
     const projects = await getGitHubProjects('willjchill');
-    console.log(projects);
     const github_container = document.querySelector("#github-projects");
     var github_item;
     var github_header;
@@ -166,8 +165,6 @@ async function init_run() {
       github_languages = document.createElement('div');
       github_languages.className = 'languages';
       for(let language of languagesArray) {
-        console.log(language);
-        console.log(filepath_lang_icon[language]);
         github_icon = document.createElement('div');
         github_icon.className = 'icon';
         github_icon.style.backgroundImage = `url(${filepath_lang_icon[language]})`;
