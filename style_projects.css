@@ -62,7 +62,6 @@
     grid-template-columns: 1fr 1fr; 
     gap: 1rem;
     background: transparent;
-    padding-bottom: 1rem;
 }
 
 #projects-title {
@@ -87,17 +86,6 @@
     background-image: url('images/contact/marble_texture.webp');
 }
 
-.item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.618rem;
-    height: 100%;
-    width: 100%;
-}
-
 .hardware-title {
     align-self: flex-start;
     padding-left: 30%;
@@ -118,17 +106,28 @@
     opacity: 0.9;
 }
 
+.item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.618rem;
+    height: 100%;
+    width: 100%;
+}
+
 .dropdown {
     overflow: hidden;
     background-color: white;
-    width: 75%;
-    min-width: 160px;
-    max-width: 1000px;
-    z-index: 1;
     border-radius: 1rem;
-    height: 0px;
     padding-left: 1rem;
     padding-right: 1rem;
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
+    position: absolute;
+    top: 0;
 }
 
 #Sunset-Showdown-img, #DLC-img {
@@ -205,6 +204,29 @@
         background-repeat: no-repeat;
         opacity: 0.75;
     }
+
+    .dropdown {
+        background: #FFF;
+        height: 0px;
+        width: 75%;
+        min-width: 160px;
+        max-width: 1000px;
+        border-radius: 1rem;
+        opacity: 0.75;
+    }
+
+    .content:hover + .dropdown {
+        top: 100%;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+        height: auto;
+    }
+
+    #projects-grid-container {
+        padding-bottom: 200px;
+    }
 }
 
 @media (min-width: 900px) {
@@ -237,5 +259,36 @@
         background-position: 50% 25%;
         background-repeat: no-repeat;
         opacity: 0.75;
+    }
+
+    .dropdown {
+        background: #FFF;
+        height: 0px;
+        width: 75%;
+        min-width: 160px;
+        max-width: 1000px;
+        border-radius: 1rem;
+        opacity: 0.75;
+    }
+
+    .dropdown ul {
+        font-size: 1.618rem;
+        font-family: "GFS Neohellenic", sans-serif;
+        font-weight: 400;
+        font-style: bold; 
+        color: black; 
+    }
+
+    .content:hover + .dropdown {
+        top: 100%;
+        opacity: 1;
+        visibility: visible;
+        -webkit-transition: all 1s;
+        transition: all 1s;
+        height: auto;
+    }
+
+    #projects-grid-container {
+        padding-bottom: 450px;
     }
 }
