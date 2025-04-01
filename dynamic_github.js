@@ -178,17 +178,65 @@ async function init_run() {
       github_item.appendChild(github_link);
       github_item.appendChild(github_languages);
     }
-    scrollAnimation();  // run scroll animation after fetching data
+    const numBoxes = Object.keys(projects).length;
+    scrollAnimation(numBoxes);  // run scroll animation after fetching data
 }
 init_run();
 
-function scrollAnimation() {
-  const scrollerInner = document.querySelector("#github-projects");
-  const scrollerContent = Array.from(scrollerInner.children);
+// function scrollAnimation() {
+//   const scrollerInner = document.querySelector("#github-projects");
+//   const scrollerContent = Array.from(scrollerInner.children);
 
-  scrollerContent.forEach((item) => {
-    const duplicatedItem = item.cloneNode(true);
-    duplicatedItem.setAttribute("aria-hidden", true);
-    scrollerInner.appendChild(duplicatedItem);
-  });
+//   scrollerContent.forEach((item) => {
+//     const duplicatedItem = item.cloneNode(true);
+//     duplicatedItem.setAttribute("aria-hidden", true);
+//     scrollerInner.appendChild(duplicatedItem);
+//   });
+// }
+
+// implementing draggable carousel animation with GSAP
+
+function scrollAnimation(numBoxes) {
+    const wrapper  = document.querySelector("#github-projects-container");
+    const proxy    = document.createElement("div");
+
+    const boxWidth  = 400;
+    const viewWidth = innerWidth;
+    const gapSize = 64;
+    const wrapWidth = numBoxes * boxWidth + (numBoxes)*gapSize;
+    const wrapVal = gsap.utils.wrap(0, wrapWidth);
+
+    gsap.set(wrapper, { xPercent: 0 });
+    const boxes = document.querySelectorAll(".projects-item");
+    for (let i = 1; i <= numBoxes; i++) {
+        // Set position and dimensions of the box
+        gsap.set(boxes[i-1], { x: i * boxWidth + i * gapSize, width: boxWidth });
+    }
+
+    const animation = gsap.to(".projects-item", {
+    duration: 1,
+    x: `+=${wrapWidth}`, 
+    ease: "none",
+    paused: true,
+    modifiers: {
+        x: function(x, target) {
+        x = parseInt(x) % wrapWidth;
+        if(target == boxes[1])
+            console.log(x)
+        // target.style.visibility = x - boxWidth > viewWidth ? "hidden" : "visible";
+        return `${x}px`;
+        }
+    }
+    });
+
+    Draggable.create(proxy, {
+        type: "x",
+        trigger: "#github-projects",
+        onDrag: updateProgress,
+        onThrowUpdate: updateProgress,
+    });
+
+    function updateProgress() {
+        animation.progress(wrapVal(this.x) / wrapWidth);
+    }
 }
