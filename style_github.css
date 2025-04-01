@@ -50,8 +50,21 @@
 }
 
 #github-projects {
+    display: flex;
     z-index: -4;
+    flex-direction: row;
+    gap: 4.236rem;
     height: 100%;
+    /* FOR INFINITE SCROLL EFFECT */
+    flex-wrap: nowrap;
+    animation: scroll 120s forwards linear infinite;
+    width: max-content;
+}
+
+@keyframes scroll {
+    to {
+        transform: translate(calc(-50% - 0.5rem));
+    }
 }
 
 .projects-item {
@@ -63,12 +76,12 @@
     gap: 1rem;
     background: #FFF;
     height: 90%;
+    width: 17.942rem;
     padding: 1rem;
     border-radius: 10px;
 }
 
 .projects-item {
-    position: absolute;
     text-align: center;
 }
 
@@ -163,15 +176,12 @@
     #github-projects-container {
         grid-column: 1 / span 12;
         grid-row: 3 / span 2;
-        position: absolute;
         overflow: hidden;
-        width: 120vw;
-        left: -20vw;
+        width: 100vw;
         height: 100%;
-        mask: linear-gradient(90deg, transparent, white 40%, white 80%, transparent);
-        z-index: 1000;
+        max-width: 100%;
+        mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
     }
-
 
     #github-title {
         grid-row: 1 / span 5;
